@@ -1,0 +1,174 @@
+html {
+    overflow-y: none;
+    overflow-x: none;
+}
+
+body {
+    font-family: 'Satoshi-Regular', sans-serif;
+    margin: 0px;
+    background: #000;
+}
+
+.whtrlive {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background: url('/img/background/day/clear.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    max-height: 100vh;
+    opacity: 1;
+    transition: 500ms;
+}
+
+.sidebar {
+    width: 25%;
+    background: rgba(0, 0, 0, 0.1);
+    border-right: 0.2px solid #adadad;
+    backdrop-filter: blur(25px);
+    padding: 50px;
+    color: #fff;
+}
+
+#locationInput {
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#locationInput .search {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    color: #fff;
+    font-family: 'Satoshi-Bold';
+    font-size: 16px;
+
+}
+
+#locationInput .search:focus {
+    outline: none;
+}
+
+#locationInput .search::placeholder {
+    color: #ddd;
+    font-size: 16px;
+}
+
+#locationInput button {
+    background: none;
+    color: #fff;
+    border: none;
+}
+
+.cities {
+    list-style-type: none;
+    line-height: 3.3rem;
+    padding: 0px;
+}
+
+.cities .city:hover {
+    font-family: 'Satoshi-Medium';
+    transition: 0.5s ease;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.sidebar hr {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.more-info {
+    list-style-type: none;
+    line-height: 3.3rem;
+    padding: 0px
+}
+
+.more-info-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.more-info-item p {
+    margin: 0px
+}
+
+/*Container Starts */
+.container {
+    width: 75%;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    font-family: 'Satoshi-Bold';
+}
+
+.container .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .top img {
+    width: 15%;
+}
+
+.container .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.weather-temperature {
+    display: flex;
+    align-items: center;
+}
+
+.weather-temperature .today-temperature {
+    font-size: 72px;
+    margin: 0px;
+    color: #D7E3FC;
+}
+
+.tomorrow-temperature {
+    margin: -10px 0px 0px 0px;
+}
+
+.container .bottom .left h1,
+.container .bottom .left h2,
+.container .bottom .left h3 {
+    margin: 0px;
+}
+
+.container .bottom .day {
+    color: #D7E3FC;
+}
+
+.sidebar h4 {
+    margin-bottom: 0px;
+}
+
+.time {
+    font-size: 60px;
+    margin: 0px;
+}
+
+@media screen and (max-width: 500px) {
+    .weather-temperature .today-temperature, .time {
+        font-size: 30px;
+    }
+
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 300px) {
+    .whtrlive {
+        min-height: 40em;
+    }
+}
