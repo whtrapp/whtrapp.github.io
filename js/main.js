@@ -165,9 +165,7 @@ let apiKey = '7c742b695b3243f3864123423232302'
                 alert('City not found')
                 app.style.opacity = '1';
             });
-          }).catch(error => {
-            console.error(error);
-          });
+          }
 
 
     fetchWeatherData()
