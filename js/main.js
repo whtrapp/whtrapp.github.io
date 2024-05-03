@@ -69,9 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getAPIkey() {
-        return fetch('7c742b695b3243f3864123423232302')
-          .then(response => response.json())
-          .then(data => data.api_key);
+        apiKey = '7c742b695b3243f3864123423232302'
+        return apiKey
       }    
 
 
