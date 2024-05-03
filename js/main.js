@@ -68,14 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return monthNames[d.getMonth()];
     }
 
-    function getAPIkey() {
-        apiKey = '7c742b695b3243f3864123423232302'
-        return apiKey
-      }    
-
+let apiKey = '7c742b695b3243f3864123423232302'
 
     function fetchWeatherData() {
-        getAPIkey().then(apiKey => {
             fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}&aqi=yes`)
             .then(response => response.json())
             .then(data => {
