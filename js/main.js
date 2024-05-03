@@ -168,7 +168,7 @@ let apiKey = '7c742b695b3243f3864123423232302'
           }).catch(error => {
             console.error(error);
           });
-    }
+
 
     fetchWeatherData()
 
