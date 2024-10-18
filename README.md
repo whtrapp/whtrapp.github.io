@@ -4,7 +4,7 @@
 A simple weather application made with HTML, CSS, JS. Weather API provided by OpenWeather
 
 ## Contribution
-Checkout `CONTRIBUTION.md` for further information regarding contribution.
+Checkout [CONTRIBUTION.md](https://github.com/whtrapp/whtrapp.github.io/blob/main/CONTRIBUTING.md) for further information regarding contribution.
 
 ## Tech-Stack
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
