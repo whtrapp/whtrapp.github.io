@@ -12,4 +12,4 @@ Checkout [CONTRIBUTION.md](https://github.com/whtrapp/whtrapp.github.io/blob/mai
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascriptx&logoColor=#F7DF1E)
 
 ## TO-DO
-- [ ] Add Mobile Responsiveness
+- [ ] Add Responsiveness
