@@ -70,9 +70,10 @@ body {
 
 .cities .city:hover {
   font-family: "Satoshi-Medium";
-  transition: 0.5s ease;
-  transform: scale(1.05);
+  transition: 0.4s ease;
+  transform: scaleX(1.1);
   cursor: pointer;
+  transform-origin: 0% 0%;
 }
 
 .sidebar hr {
@@ -155,35 +156,36 @@ body {
   margin: 0px;
 }
 
-@media screen and (max-width: 500px) {
-  .weather-temperature .today-temperature,
-  .time {
-    font-size: 30px;
-  }
-
-  html {
-    font-size: 12px;
-  }
+.place {
+  display: flex;
+  align-items: center;
 }
 
-@media screen and (max-height: 300px) {
-  .whtrlive {
-    min-height: 40em;
-  }
-}
-/* Codes for clear history button */
-#clearHistory {
+.clear-history {
   background-color: transparent;
   color: white;
-  font-family: "Satoshi";
-  font-size: 20px;
+  font-family: "Satoshi-Regular", sans-serif;
+  font-size: 16px;
   border: 0.5px solid white;
-  padding: 10px;
+  padding: 10px 30px;
   margin-bottom: 10px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.4s ease;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
-#clearHistory:hover {
+.clear-history:hover {
   color: black;
   background-color: white;
+}
+
+.clear-history svg {
+  fill: white;
+}
+
+.clear-history:hover svg {
+  fill: black;
 }
