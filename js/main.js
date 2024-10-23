@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Change button styles based on day or night
         if (timeOfDay === "day") {
           exploreBtn.style.backgroundColor = "#007bff"; // Blue for day
-          exploreBtn.style.color = "white";
+          exploreBtn.style.color = "white"; // Text color for day
           exploreBtn.querySelector("svg").style.fill = "white"; // Set SVG color for day
 
           // Add hover effect for day
@@ -245,18 +245,19 @@ document.addEventListener("DOMContentLoaded", function () {
             exploreBtn.querySelector("svg").style.fill = "white"; // Revert to original
           });
         } else {
-          exploreBtn.style.backgroundColor = "#2c3e50"; // Dark for night
-          exploreBtn.style.color = "#f1c40f"; // Yellow for night
-          exploreBtn.querySelector("svg").style.fill = "#f1c40f"; // Set SVG color for night
+          // Dark mode styles
+          exploreBtn.style.backgroundColor = "white"; // White background for dark mode
+          exploreBtn.style.color = "black"; // Black text color for dark mode
+          exploreBtn.querySelector("svg").style.fill = "black"; // Set SVG color to black for dark mode
 
-          // Add hover effect for night
+          // Add hover effect for dark mode
           exploreBtn.addEventListener("mouseover", () => {
-            exploreBtn.style.backgroundColor = "#1a252f"; // Slightly darker on hover
-            exploreBtn.querySelector("svg").style.fill = "#f9e79f"; // Lighter on hover
+            exploreBtn.style.backgroundColor = "#f0f0f0"; // Light gray on hover
+            exploreBtn.querySelector("svg").style.fill = "#7f7f7f"; // Darker gray on hover
           });
           exploreBtn.addEventListener("mouseout", () => {
-            exploreBtn.style.backgroundColor = "#2c3e50"; // Revert to original
-            exploreBtn.querySelector("svg").style.fill = "#f1c40f"; // Revert to original
+            exploreBtn.style.backgroundColor = "white"; // Revert to original
+            exploreBtn.querySelector("svg").style.fill = "black"; // Revert to original
           });
         }
 
