@@ -189,3 +189,27 @@ body {
 .clear-history:hover svg {
   fill: black;
 }
+
+@media (max-width: 768px) {
+  .whtrlive {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+
+.logo {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for both effects */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Scales up the logo */
+  opacity: 0.8; /* Slightly transparent */
+}
