@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Contributing to whtrapp.github.io
 
 Thank you for your interest in contributing to **whtr.live**! We welcome all contributions that help improve the project. Whether you're fixing bugs, improving documentation, or adding new features, your efforts are much appreciated. Please take a moment to review the guidelines below.
@@ -10,13 +12,14 @@ Thank you for your interest in contributing to **whtr.live**! We welcome all con
    git clone https://github.com/your-username/whtrapp.github.io.git
    ```
 3. Create a branch
-  ```bash
-  git checkout -b feature/your-feature-name
-  ```
+
+```bash
+git checkout -b feature/your-feature-name
+```
 
 ## Making Changes
 
-- Ensure your code follows the style of the repository.
+- Ensure your code follows the style of the repository.t
 - If you're adding new features, make sure they're relevant to the scope of the project.
 - Bug fixes should be specific and well-documented.
 
