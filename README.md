@@ -99,14 +99,14 @@ Got ideas? Feel free to suggest features or improvements!
 If you have contributed to this project, please know that your efforts are greatly appreciated!
 
 
-##Minimalistic Weather WebApp
+## Minimalistic Weather WebApp
 
 Hey there! 👋 Welcome to the Minimalistic Weather WebApp, your go-to tool for checking the weather in the simplest and most straightforward way possible. No clutter, no unnecessary features — just the info you need.
 
-##🌦 What Does It Do?
+## 🌦 What Does It Do?
 This web app provides real-time weather updates for any city in the world or even your current location. Whether you want to know the temperature, humidity, or weather conditions (rain, sunshine, etc.), it's all at your fingertips.
 
-##Key Features:
+## Key Features:
 Current Weather: Get up-to-the-minute weather conditions.
 Minimalistic Design: Simple, clean, and distraction-free.
 Location-Based Weather: Automatically detects your location for instant weather updates.
@@ -114,24 +114,24 @@ Responsive: Works smoothly on your phone, tablet, or desktop.
 🛠 Built With
 Here’s what’s powering this app (don’t worry, no coding knowledge needed to appreciate it!):
 
-##HTML5 & CSS3: To give it structure and style.
+## HTML5 & CSS3: To give it structure and style.
 JavaScript: For all the behind-the-scenes functionality.
 OpenWeatherMap API: Fetches real-time weather data from around the globe.
 Responsive Design: So it looks great on any device.
 
-##🎯 How Do I Use It?
+## 🎯 How Do I Use It?
 Open the App: You can access the live app (insert the link to the live app) or run it locally if you're feeling a little techy.
 Check the Weather: It will automatically show your local weather. Want to check the weather elsewhere? Just type the city name, and boom — instant results!
 Enjoy the Simplicity: The app is all about giving you the weather without the fuss.
-💡 How I Contributed
+## 💡 How I Contributed
 As a non-coding contributor, I’ve helped improve the user experience by enhancing documentation and testing. You don’t have to be a coder to contribute — there are other ways to get involved too!
 
-##You Can Help By:
+## You Can Help By:
 Improving the Docs: Make instructions clearer for users and future contributors.
 Testing & Feedback: Found something that could be better? Open an issue and let us know!
 Spreading the Word: Share the project with others, so more people can enjoy it.
 
-##🚀 Want to Contribute?
+## 🚀 Want to Contribute?
 Here’s how you can get involved in making this project even better:
 
 Fork the repository and clone it.
@@ -143,9 +143,9 @@ Push to your branch:
 git push origin my-branch
 Open a pull request, and we’ll review it!
 
-##🌍 Stay Connected 
+## 🌍 Stay Connected 
 Check out the latest updates, new features, and improvements over on the repository page. We’re always adding new stuff, so stay tuned!
 
-##💬 Got Questions?
+## 💬 Got Questions?
 If you run into any issues or just want to share some feedback, feel free to open an issue on the repo. We’d love to hear from you!
 
