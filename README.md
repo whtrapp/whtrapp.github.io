@@ -89,7 +89,8 @@ Here's what we're working on next:
 Got ideas? Feel free to suggest features or improvements!
 
 ---
-Minimalistic Weather WebApp
+#Minimalistic Weather WebApp
+
 Hey there! 👋 Welcome to the Minimalistic Weather WebApp, your go-to tool for checking the weather in the simplest and most straightforward way possible. No clutter, no unnecessary features — just the info you need.
 
 🌦 What Does It Do?
