@@ -86,6 +86,18 @@ Here's what we're working on next:
 - **Improve UI/UX**: Add more design elements to enhance the user experience.
 - **Forecast Feature**: Display a 5-day forecast for the searched location.
 
+Got ideas? Feel free to suggest features or improvements!
+
+---
+## 🙏 Acknowledgments
+
+- **OpenWeather**: A special thanks to the [OpenWeather API](https://openweathermap.org/) for providing reliable weather data and making this project possible.
+- **Contributors**: Thank you to all the contributors who have helped improve this project through code, documentation, and feedback.
+- **Hacktoberfest**: Thanks to [DigitalOcean](https://hacktoberfest.digitalocean.com/) for organizing Hacktoberfest and promoting open source contributions.
+- **Community**: A big shoutout to the developer community for their support, ideas, and encouragement.
+
+If you have contributed to this project, please know that your efforts are greatly appreciated!
+
 
 ##Minimalistic Weather WebApp
 
