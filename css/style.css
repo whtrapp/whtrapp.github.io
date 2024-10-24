@@ -277,3 +277,13 @@ body {
     font-size: 16px;
   }
 }
+footer {
+  color: white;
+  bottom: 0;
+  left: 55%;
+  transform: translateX(-10%);
+  position: fixed;
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+}
