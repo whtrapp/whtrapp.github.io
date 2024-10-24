@@ -20,7 +20,7 @@ body {
   max-height: 100vh;
   opacity: 1;
   transition: 500ms;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .sidebar {
