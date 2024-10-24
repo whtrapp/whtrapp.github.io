@@ -32,6 +32,34 @@ body {
   color: #fff;
   height: calc(100vh - 50px);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(136, 136, 136, 0.6) transparent;
+  scroll-behavior: smooth;
+}
+
+
+.sidebar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Hide track when not needed */
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.6); /* Semi-transparent thumb */
+  border-radius: 10px;
+  background-clip: padding-box; /* Ensure border is visible */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.8); /* Darker on hover */
+}
+
+.sidebar::-webkit-scrollbar-corner {
+  background: transparent; /* Hide corner when not needed */
 }
 
 #locationInput {
@@ -217,6 +245,30 @@ body {
 
 .explore-btn svg {
   margin-left: 10px; /* Space between text and chevron icon */
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
 @media screen and (max-width: 768px) {
