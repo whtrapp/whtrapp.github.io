@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("locationInput");
   const search = document.querySelector(".search");
   const btn = document.querySelector(".searchbtn");
-  const clrHistory = document.getElementById("clrHistory");
+  const clrHistory = document.getElementById("clearHistory");
   const cities = document.querySelectorAll(".city");
   const dayOutput = document.querySelector(".day");
   const sunriseOutput = document.querySelector(".sunrise");
@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       cityInput = search.value;
       fetchWeatherData();
-      saveToLocalStorage(cityInput);
       displayLastVisited();
       search.value = "";
       app.style.opacity = "1";
@@ -287,10 +286,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           app.style.backgroundImage = `url(../img/background/${timeOfDay}/snowy.jpg)`;
         }
+        saveToLocalStorage(data.location.name);
         app.style.opacity = "1";
       })
       .catch(() => {
-        alert("City not found");
         app.style.opacity = "1";
       });
   }
