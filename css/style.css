@@ -190,21 +190,6 @@ body {
   fill: black;
 }
 
-@media (max-width: 768px) {
-  .whtrlive {
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    width: 100%;
-  }
-
-  .container {
-    width: 100%;
-  }
-}
-
-
 .logo {
   transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for both effects */
 }
@@ -212,4 +197,127 @@ body {
 .logo:hover {
   transform: scale(1.1); /* Scales up the logo */
   opacity: 0.8; /* Slightly transparent */
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 30%;
+    padding: 20px;
+  }
+
+  .container {
+    width: 70%;
+    padding: 20px;
+  }
+
+  .time {
+    font-size: 48px;
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 56px;
+  }
+
+  .clear-history {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whtrlive {
+    flex-direction: column; 
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    border-right: none;
+    margin-bottom: 20px; 
+  }
+
+  .container {
+    width: 100%; 
+    padding: 15px;
+  }
+
+  .cities {
+    line-height: 2rem; 
+    font-size: 18px; 
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 48px;
+  }
+
+  .tomorrow-temperature {
+    text-align: center;
+  }
+
+  .time {
+    font-size: 36px;
+  }
+
+  .clear-history {
+    font-size: 14px;
+    padding: 10px 15px; 
+    width: 100%; 
+    text-align: center; 
+  }
+
+  
+  .clear-history:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); 
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .time {
+    font-size: 28px; 
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 40px;
+  }
+
+  .clear-history {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+
+  /* Logo adjustments */
+  .container .top img {
+    width: 70%; 
+    max-width: 120px; 
+  }
+
+  
+  .container .top {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .container .bottom {
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+  }
+
+  .weather-temperature {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .weather-icon {
+    width: 60px; 
+  }
 }
