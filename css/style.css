@@ -93,7 +93,7 @@ body {
   border: none;
 }
 
-.cities {
+/*.cities {
   list-style-type: none;
   line-height: 3.3rem;
   padding: 0px;
@@ -105,6 +105,70 @@ body {
   transform: scaleX(1.1);
   cursor: pointer;
   transform-origin: 0% 0%;
+}*/
+
+
+.cities {
+  display: flex;
+  gap: 2rem;
+  list-style-type: none;
+  line-height: 3.3rem;
+  padding: 0px;
+}
+
+.cities, .drop-down li {
+  list-style: none;
+  height: 100%;
+  transition: 0.4s ease;
+  transform: scaleX(1.1);
+  transform-origin: 0% 0%;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.drop-down {
+  position: absolute;
+  padding: 0.5rem 0;
+  margin: 0.5rem -0.5rem;
+  color: mediumaquamarine;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  font-size: 12px;
+  display: none;
+}
+
+.cities:hover {
+
+  color: #fff;
+  border-radius: 0.5rem;
+}
+
+.cities:hover .drop-down {
+  display: block;
+}
+
+.cities a {
+  display: flex;
+  align-items: center;
+}
+
+.cities.dropdown-icon {
+  font-size: 18px;
+  position: relative;
+  right: -5px;
+  transform: rotate(0deg);
+  transition: 0.3s ease-in-out all;
+}
+
+.cities:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.drop-down li:hover {
+  background:mediumaquamarine;
+  color: #fff;
+  border-radius: 0.5rem;
 }
 
 .sidebar hr {
@@ -115,6 +179,7 @@ body {
   list-style-type: none;
   line-height: 3.3rem;
   padding: 0px;
+  
 }
 
 .more-info-item {
