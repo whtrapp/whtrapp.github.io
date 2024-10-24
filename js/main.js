@@ -12,12 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("locationInput");
   const search = document.querySelector(".search");
   const btn = document.querySelector(".searchbtn");
-  const clrHistory = document.querySelector("#clearHistory");
+  const clrHistory = document.getElementById("clearHistory");
   const cities = document.querySelectorAll(".city");
   const dayOutput = document.querySelector(".day");
   const sunriseOutput = document.querySelector(".sunrise");
   const sunsetOutput = document.querySelector(".sunset");
   const tomorrowOutput = document.querySelector(".tomorrow-temperature");
+  const lastVisitedList = document.getElementById("lastVisitedList");
 
   //Default City
   let cityInput = "London";
@@ -45,63 +46,48 @@ document.addEventListener("DOMContentLoaded", function () {
     app.style.opacity = "1";
   });
 
-  // Function to save data to local storage
-  function saveToLocalStorage(city) {
-    const storedData = localStorage.getItem("lastVisited");
-    if (storedData) {
-      let data = JSON.parse(storedData);
-      const existingCityIndex = data.findIndex((item) => item.city == city);
-      if (existingCityIndex !== -1) {
-        data[existingCityIndex].city = city;
-        data.unshift(data.splice(existingCityIndex, 1)[0]);
-      } else {
-        data.unshift({ city });
-      }
-      data = data.slice(0, 3);
-      localStorage.setItem("lastVisited", JSON.stringify(data));
-    } else {
-      localStorage.setItem("lastVisited", JSON.stringify([{ city }]));
-    }
+  clrHistory.addEventListener("click", handleClearHistory);
+
+  function handleClearHistory() {
+    clearLastVisited();
+    displayLastVisited();
   }
 
-  // Function to Clear last visited cities
-  function clearLastVisitied() {
-    const storedData = localStorage.getItem("lastVisited");
-    if (storedData) {
-      localStorage.removeItem("lastVisited");
-    }
-  }
-  clrHistory.addEventListener("click", (e) => {
-    clearLastVisitied();
-    displayLastVisited();
-  });
-  // Function to display last visited cities
   function displayLastVisited() {
     const storedData = localStorage.getItem("lastVisited");
-    const lastVisitedList = document.getElementById("lastVisitedList");
+    lastVisitedList.innerHTML = "";
+
     if (storedData) {
-      const data = JSON.parse(storedData);
-      lastVisitedList.innerHTML = "";
+      let data;
+      try {
+        data = JSON.parse(storedData);
+      } catch (error) {
+        console.error("Error parsing stored data:", error);
+        lastVisitedList.innerHTML = "Error loading data.";
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
       data.forEach((item) => {
-        console.log(item);
         const li = document.createElement("li");
         li.classList.add("city");
-        li.addEventListener("click", (e) => {
-          //Change to clicked city
-          cityInput = e.target.innerHTML;
-          console.log(cityInput);
-          //def later
-          fetchWeatherData();
-          saveToLocalStorage(cityInput);
-          displayLastVisited();
-          app.style.opacity = "1";
-        });
         li.textContent = item.city;
-        lastVisitedList.appendChild(li);
+        li.addEventListener("click", handleCityClick);
+        fragment.appendChild(li);
       });
+      lastVisitedList.appendChild(fragment);
     } else {
       lastVisitedList.innerHTML = "Empty..";
     }
+  }
+
+  function handleCityClick(e) {
+    const cityInput = e.target.innerHTML;
+    console.log(cityInput);
+    fetchWeatherData(cityInput);
+    saveToLocalStorage(cityInput);
+    displayLastVisited();
+    app.style.opacity = "1";
   }
 
   cities.forEach((city) => {
@@ -125,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       cityInput = search.value;
       fetchWeatherData();
-      saveToLocalStorage(cityInput);
       displayLastVisited();
       search.value = "";
       app.style.opacity = "1";
@@ -175,9 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchWeatherData();
   }
 
-  function fetchWeatherData() {
+  function fetchWeatherData(city = cityInput) {
     fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}&aqi=yes`
+      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -201,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         icon.src = "./img/icons/" + iconID;
 
         fetch(
-          `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${cityInput}&dt=${theDate}`
+          `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${city}&dt=${theDate}`
         )
           .then((response) => response.json())
           .then((astrodata) => {
@@ -210,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
 
         fetch(
-          `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityInput}&days=1&aqi=yes&alerts=no`
+          `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=yes&alerts=no`
         )
           .then((response) => response.json())
           .then((tomorrowdata) => {
@@ -301,12 +286,37 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           app.style.backgroundImage = `url(../img/background/${timeOfDay}/snowy.jpg)`;
         }
+        saveToLocalStorage(data.location.name);
         app.style.opacity = "1";
       })
       .catch(() => {
-        alert("City not found");
         app.style.opacity = "1";
       });
+  }
+
+  function saveToLocalStorage(city) {
+    const storedData = localStorage.getItem("lastVisited");
+    if (storedData) {
+      let data = JSON.parse(storedData);
+      const existingCityIndex = data.findIndex((item) => item.city == city);
+      if (existingCityIndex !== -1) {
+        data[existingCityIndex].city = city;
+        data.unshift(data.splice(existingCityIndex, 1)[0]);
+      } else {
+        data.unshift({ city });
+      }
+      data = data.slice(0, 3);
+      localStorage.setItem("lastVisited", JSON.stringify(data));
+    } else {
+      localStorage.setItem("lastVisited", JSON.stringify([{ city }]));
+    }
+  }
+
+  function clearLastVisited() {
+    const storedData = localStorage.getItem("lastVisited");
+    if (storedData) {
+      localStorage.removeItem("lastVisited");
+    }
   }
 
   fetchWeatherData();
