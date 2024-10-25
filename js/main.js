@@ -257,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     app.style.opacity = "1";
     // Initial display of last visited cities
+    
     displayLastVisited();
   });
   
