@@ -8,6 +8,39 @@ body {
   margin: 0px;
   background: #000;
 }
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  color: Black;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  backdrop-filter: blur(25px);
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
 
 .whtrlive {
   width: 100%;
@@ -20,6 +53,7 @@ body {
   max-height: 100vh;
   opacity: 1;
   transition: 500ms;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -29,6 +63,36 @@ body {
   backdrop-filter: blur(25px);
   padding: 50px;
   color: #fff;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(136, 136, 136, 0.6) transparent;
+  scroll-behavior: smooth;
+}
+
+
+.sidebar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Hide track when not needed */
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.6); /* Semi-transparent thumb */
+  border-radius: 10px;
+  background-clip: padding-box; /* Ensure border is visible */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.8); /* Darker on hover */
+}
+
+.sidebar::-webkit-scrollbar-corner {
+  background: transparent; /* Hide corner when not needed */
 }
 
 #locationInput {
@@ -191,6 +255,7 @@ body {
 }
 
 
+
 @media (max-width: 1024px) {
   .sidebar {
     width: 30%;
@@ -311,5 +376,61 @@ body {
 
   .weather-icon {
     width: 60px; 
+
+/* Style for the Explore Button */
+.explore-btn {
+  position: absolute;
+  right: 20px; /* Position it to the right */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #2a65a5;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #0056b3;
+}
+
+.explore-btn svg {
+  margin-left: 10px; /* Space between text and chevron icon */
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+@media screen and (max-width: 768px) {
+  .explore-btn {
+    padding: 10px 16px;
+    font-size: 16px;
+
   }
 }
