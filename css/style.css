@@ -376,7 +376,8 @@ body {
 
   .weather-icon {
     width: 60px; 
-
+  }
+}
 /* Style for the Explore Button */
 .explore-btn {
   position: absolute;
