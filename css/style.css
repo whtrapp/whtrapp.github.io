@@ -1,17 +1,24 @@
 html {
+  box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
   overflow-y: none;
   overflow-x: none;
 }
 
+*, *::before, *::after {
+  box-sizing: inherit; /* Apply box-sizing to all elements */
+}
+
 body {
   font-family: "Satoshi-Regular", sans-serif;
-  margin: 0px;
+  margin: 0;
   background: #000;
+  color: #fff; /* Default text color */
 }
 
 .whtrlive {
   width: 100%;
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
   flex-direction: row;
   background: url("/img/background/day/clear.jpg");
   background-repeat: no-repeat;
@@ -95,8 +102,11 @@ body {
   margin: 0px;
 }
 
-/*Container Starts */
+
 .container {
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 15px; 
   width: 75%;
   padding: 60px;
   display: flex;
@@ -188,4 +198,38 @@ body {
 
 .clear-history:hover svg {
   fill: black;
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%; 
+  }
+  .container {
+    width: 100%; 
+    padding: 20px;
+  }
+  .container .top img {
+    width: 30%;
+  }
+  .container .bottom {
+    flex-direction: column;
+  }
+  .container .bottom .left {
+    margin-bottom: 20px;
+  }
+  .time, .weather-temperature .today-temperature {
+    font-size: 40px;
+  }
+  .clear-history {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .sidebar {
+    width: 35%;
+  }
+  .container {
+    width: 65%;
+  }
 }

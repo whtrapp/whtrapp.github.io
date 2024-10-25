@@ -39,106 +39,51 @@
   <body>
     <div class="whtrlive">
       <div class="sidebar" data-aos="fade-right">
-        <form id="locationInput">
-          <input type="text" class="search" placeholder="Search Location.." />
-          <button class="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg></button>
-        </form>
-        <h4>Cities</h4>
-        <div class="cities-div">
-          <ul class="cities">
-            <li class="city">New York</li>
-            <li class="city">California</li>
-            <li class="city">Paris</li>
-            <li class="city">Tokyo</li>
-            <li class="city">Bali</li>
-            <li class="city">Sydney</li>
-            <li class="city">Dubai</li>
-          </ul>
+        <h4>Location</h4>
+        <div id="locationInput">
+          <input type="text" class="search" placeholder="Search location..." />
+          <button>Search</button>
         </div>
-        <hr />
-        <h4>Last Visited</h4>
-        <ul id="lastVisitedList" class="cities">
-          Empty..
+        <ul class="cities">
+          <li class="city">City 1</li>
+          <li class="city">City 2</li>
+          <li class="city">City 3</li>
         </ul>
-        <button id="clearHistory" class="clear-history"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256"><path d="M235.29,216.7C212.86,205.69,200,182.12,200,152V134.69a15.94,15.94,0,0,0-10.09-14.87l-28.65-11.46A8,8,0,0,1,156.79,98l22.32-56.67C184,28.79,178,14.21,165.34,9.51a24,24,0,0,0-30.7,13.71L112.25,80.08a8,8,0,0,1-10.41,4.5L73.11,73.08a15.91,15.91,0,0,0-17.38,3.66C34.68,98.4,24,123.71,24,152a111.53,111.53,0,0,0,31.15,77.53A8.06,8.06,0,0,0,61,232H232a8,8,0,0,0,8-7.51A8.21,8.21,0,0,0,235.29,216.7ZM115.11,216a87.52,87.52,0,0,1-24.26-41.71,8.21,8.21,0,0,0-9.25-6.18A8,8,0,0,0,75.28,178a105.33,105.33,0,0,0,18.36,38H64.44A95.62,95.62,0,0,1,40,152a85.92,85.92,0,0,1,7.73-36.3l137.8,55.13c3,18.06,10.55,33.5,21.89,45.19Z"></path></svg> Clear History</button>
         <hr />
-        <h4>More Information</h4>
+        <h4>More Info</h4>
         <ul class="more-info">
-          <li>
-            <div class="more-info-item">
-              <p>Sunrise</p>
-              <p class="sunrise">6:37 AM</p>
-            </div>
+          <li class="more-info-item">
+            <p>Info 1</p>
+            <p>Details</p>
           </li>
-          <li>
-            <div class="more-info-item">
-              <p>Sunset</p>
-              <p class="sunset">6:21 PM</p>
-            </div>
-          </li>
-          <li>
-            <div class="more-info-item">
-              <p>Wind Speed</p>
-              <p class="windspeed">14km/h</p>
-            </div>
-          </li>
-          <li>
-            <div class="more-info-item">
-              <p>Humidity</p>
-              <p class="humidity">21%</p>
-            </div>
-          </li>
-          <li>
-            <div class="more-info-item">
-              <p>Precipitation</p>
-              <p class="precipitation">0%</p>
-            </div>
-          </li>
-          <li>
-            <div class="more-info-item">
-              <p>Cloudy</p>
-              <p class="cloudy">69%</p>
-            </div>
+          <li class="more-info-item">
+            <p>Info 2</p>
+            <p>Details</p>
           </li>
         </ul>
-        <p><u>Version 1.1</u></p>
       </div>
       <div class="container">
         <div class="top" data-aos="fade-down">
-          <div>
-            <img src="img/logo.png" alt="logo" />
-            <p style="margin: 0px">Dev by Ato & Apixul</p>
-          </div>
-          <h1 class="time">6:09&nbsp;PM</h1>
+          <img src="img/logo.png" alt="logo" />
+          <div class="time">12:00 PM</div>
         </div>
         <div class="bottom" data-aos="fade-up">
           <div class="left">
-            <h2 class="date">February 25, 2023</h2>
-            <h2 class="day">Saturday</h2>
-            <h1 class="place"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></svg> London</h1>
-          </div>
-          <div class="right">
+            <h1>Weather Today</h1>
             <div class="weather-temperature">
-              <img
-                src="img/icons/day/113.png"
-                class="weather-icon"
-                alt="weather status icon"
-              />
-              <h1 class="today-temperature">40&#176;C / 104&#176;F</h1>
+              <div class="today-temperature">75°</div>
+              <div class="tomorrow-temperature">Tomorrow: 70°</div>
             </div>
-            <h2 class="tomorrow-temperature" style="text-align: end">
-              Tommorow: 20&#176;C / 68&#176;F
-            </h2>
           </div>
+          <div class="day">Monday</div>
         </div>
+        <button class="clear-history">Clear History</button>
       </div>
     </div>
 
     <!--AOS JS-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
-
       AOS.init({
         duration: 700,
       });
