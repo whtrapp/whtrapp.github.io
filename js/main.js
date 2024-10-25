@@ -1,4 +1,4 @@
-import { dayOfTheWeek, getMonth } from './utils.js';
+import { dayOfTheWeek, getMonth, getCitiesList } from './utils.js';
 import {
   fetchWeatherData,
   fetchAstronomyData,
@@ -10,6 +10,7 @@ import {
   getLastVisitedCity,
 } from './localStorage.js';
 import { updateUI } from './uiController.js';
+import { autocomplete } from './searchAutocomplete.js'
 
 document.addEventListener('DOMContentLoaded', function () {
   const app = document.querySelector('.whtrlive');
@@ -169,4 +170,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial load
     updateWeatherDisplay();
     displayLastVisited();
+    autocomplete(document.getElementById("search"), getCitiesList());
 });
