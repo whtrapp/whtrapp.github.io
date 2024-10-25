@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const lastVisitedList =
     document.getElementById('lastVisitedList');
   const exploreBtn = document.getElementById('exploreBtn');
+  const displayPlace = document.getElementById('displayPlace');
+  let place = "";
 
   let cityInput = getLastVisitedCity() || 'London';
 
@@ -65,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
             timeOutput.innerHTML = time;
             dayOutput.innerHTML = dayOfTheWeek(d, m, y);
             nameOutput.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></svg> ${weatherData.location.name}, ${weatherData.location.country}`;
+            place = weatherData.location.name + ", " + weatherData.location.country;
+            typingEffect();
 
             const iconID = weatherData.current.condition.icon.substr(
                 '//cdn.weatherapi.com/weather/64x64/'.length
@@ -164,7 +168,26 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWeatherDisplay();
             search.value = '';
         }
-    });
+    } );
+  
+    function typingEffect() {
+      let initialText = "Place: ";
+      let placeText = place;
+      let index = 0;
+
+      // Clear the displayPlace content each time before starting the animation
+      displayPlace.innerHTML = initialText;
+
+      function typeCharacter() {
+        if (index < placeText.length) {
+          displayPlace.innerHTML = initialText + placeText.slice(0, index + 1);
+          index++;
+          setTimeout(typeCharacter, 100);
+        }
+      }
+
+      typeCharacter();
+    }
 
     // Initial load
     updateWeatherDisplay();
