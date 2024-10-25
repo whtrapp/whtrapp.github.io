@@ -24,7 +24,7 @@ body {
 }
 
 .sidebar {
-  width: 25%;
+  width: 10%;
   background: rgba(0, 0, 0, 0.1);
   border-right: 0.2px solid #adadad;
   backdrop-filter: blur(25px);
@@ -36,7 +36,6 @@ body {
   scrollbar-color: rgba(136, 136, 136, 0.6) transparent;
   scroll-behavior: smooth;
 }
-
 
 .sidebar::-webkit-scrollbar {
   width: 12px;
