@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } );
   
     function typingEffect() {
-      let initialText = "Place: ";
+      let initialText = "";
       let placeText = place;
       let index = 0;
 
