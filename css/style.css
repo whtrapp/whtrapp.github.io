@@ -435,3 +435,15 @@ body {
 
   }
 }
+footer {
+  color: white;
+  bottom: 0;
+  right: 1.5%;
+  transform: translateX(-10%);
+  position: fixed;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.625rem;
+  z-index: 1000;  
+}
+
