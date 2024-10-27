@@ -138,10 +138,13 @@
       <div class="container">
         <div class="top" data-aos="fade-down">
           <div>
-            <img src="img/logo.png" alt="logo"/>
+            <img src="img/logo.png" alt="logo" />
             <p style="margin: 0px">Dev by Ato & Apixul</p>
           </div>
-          <h1 class="time">6:09&nbsp;PM</h1>
+          <h1 class="time" id="currentTime">9:51:22 
+          <span class="period">PM</span>
+         </h1>
+ <!-- Added id="currentTime" -->
         </div>
         <!-- Explore Button -->
         <button id="exploreBtn" class="explore-btn">
@@ -195,14 +198,28 @@
             </footer>
     </div>
 
-    <!--AOS JS-->
+   <!--AOS JS-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
-
       AOS.init({
         duration: 700,
       });
+
+      // Function to update the time with seconds
+      function updateTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const amPm = hours >= 12 ? 'PM' : 'AM';
+
+        const formattedTime = `${(hours % 12) || 12}:${minutes}:${seconds} ${amPm}`;
+        document.getElementById("currentTime").textContent = formattedTime;
+      }
+
+      // Update the time every second
+      setInterval(updateTime, 1000);
+      updateTime(); // Initial call to display the time right away
     </script>
 
     <!--JavaScript-->

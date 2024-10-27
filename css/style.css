@@ -13,6 +13,33 @@ body {
   display: inline-block;
 }
 
+/* ================================== */
+.searchbtn{
+  cursor: pointer;
+}
+
+.explore-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  background-color: #6b17f2; /* Adjust to preferred color */
+}
+
+.today-temperature {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+
+/* ===================================== */
+
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -177,7 +204,7 @@ body {
 }
 
 .container .top img {
-  width: 15%;
+  width: 25%;
 }
 
 .container .bottom {
@@ -217,8 +244,16 @@ body {
 
 .time {
   font-size: 60px;
-  margin: 0px;
+  margin: 0;
+  display: inline;
+  align-items: center;
+  gap: 0px; /* Adjust spacing as needed */
 }
+
+.period {
+  font-size: inherit; /* Ensure it matches the time font */
+}
+
 
 .place {
   display: flex;
