@@ -17,6 +17,9 @@ body {
 .searchbtn{
   cursor: pointer;
 }
+input{
+  cursor: pointer;
+}
 
 .explore-btn:hover {
   transform: scale(1.05);
