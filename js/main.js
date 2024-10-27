@@ -10,8 +10,9 @@ import {
   getLastVisitedCity,
 } from './localStorage.js';
 import { updateUI } from './uiController.js';
-import { autocomplete } from './searchAutocomplete.js'
-
+import { autocomplete } from './searchAutocomplete.js';
+import { fetchTime } from './timeAPI.js';
+var timeZone;
 document.addEventListener('DOMContentLoaded', function () {
   const app = document.querySelector('.whtrlive');
   const temp = document.querySelector('.today-temperature');
@@ -55,18 +56,15 @@ document.addEventListener('DOMContentLoaded', function () {
   async function updateWeatherDisplay(city = cityInput) {
     try {
       const weatherData = await fetchWeatherData(city);
+      timeZone = weatherData.location.tz_id;
       const date = weatherData.location.localtime;
       const y = parseInt(date.substr(0, 4));
       const m = parseInt(date.substr(5, 2));
       const d = parseInt(date.substr(8, 2));
-      const time = date.substr(11);
       const theDate = `${y}-${m}-${d}`;
-
+      setInterval(() => displayTime(timeZone), 1000); 
             // Update UI elements
             temp.innerHTML = `${weatherData.current.temp_c}&#176;C / ${weatherData.current.temp_f}&#176;F`;
-            dateOutput.innerHTML = `${getMonth(d, m, y)} ${d}, ${y}`;
-            timeOutput.innerHTML = time;
-            dayOutput.innerHTML = dayOfTheWeek(d, m, y);
             // nameOutput.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></svg> ${weatherData.location.name}, ${weatherData.location.country}`;
             place = weatherData.location.name + ", " + weatherData.location.country;
             typingEffect();
@@ -108,7 +106,17 @@ document.addEventListener('DOMContentLoaded', function () {
             app.style.opacity = '1';
         }
     }
-
+    async function displayTime(timeZone){
+      const timeData = await fetchTime(timeZone);
+      const y = timeData.year;
+      const m = timeData.month;
+      const d = timeData.day;
+      const time = timeData.time;
+      const theDate = `${y}-${m}-${d}`;
+      dateOutput.innerHTML = `${getMonth(d, m, y)} ${d}, ${y}`;
+      timeOutput.innerHTML = time;
+      dayOutput.innerHTML = dayOfTheWeek(d, m, y);
+    }
     function displayLastVisited() {
         const storedData = localStorage.getItem('lastVisited');
         lastVisitedList.innerHTML = '';
