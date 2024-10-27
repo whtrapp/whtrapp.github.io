@@ -384,16 +384,16 @@ transform: translateY(-50%);
 
 .custom-button {
   width: 100%;
-  background-color: transparent !important;
+  background-color: #2a65a5 !important;
   color: white !important;
   font-family: "Satoshi-Regular", sans-serif;
   font-size: 18px;
   border: 0.5px solid white !important;
   padding: 10px 30px;
-  margin-top: -10px;
+  margin-top: 10px;
   cursor: pointer;
   transition: all 0.4s ease;
-  border-radius: 10px;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -402,17 +402,13 @@ transform: translateY(-50%);
 }
 
 .custom-button:hover {
-  color: black !important;
-  background-color: white !important;
+  background-color: #0056b3 !important;
 }
 
 .custom-button svg {
   fill: white !important;
 }
 
-.custom-button:hover svg {
-  fill: black !important;
-}
 .custom-button-content {
   display: flex;
   align-items: center;
