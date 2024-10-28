@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   async function updateWeatherDisplay(city = cityInput) {
+    showSpinner();
     try {
       const weatherData = await fetchWeatherData(city);
       timeZone = weatherData.location.tz_id;
@@ -91,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (error) {
       console.error('Error updating weather display:', error);
       app.style.opacity = '1';
+    } finally {
+      hideSpinner();
     }
   }
 
@@ -181,6 +184,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     typeCharacter();
+  }
+
+  function showSpinner() {
+    document.getElementById('spinner').style.display = 'block';
+  }
+
+  function hideSpinner() {
+    document.getElementById('spinner').style.display = 'none';
   }
 
   updateWeatherDisplay();
