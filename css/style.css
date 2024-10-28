@@ -13,6 +13,16 @@ body {
   display: inline-block;
 }
 
+/* ================================== */
+.searchbtn{
+  cursor: pointer;
+}
+input{
+  cursor: pointer;
+}
+
+/* ===================================== */
+
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -456,3 +466,4 @@ footer {
   font-size: 0.625rem;
   z-index: 1000;
 }
+
