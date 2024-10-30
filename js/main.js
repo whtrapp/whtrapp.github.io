@@ -202,4 +202,4 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(() => {
     updateWeatherDisplay();
   }, 60 * 60 * 1000);
-});
+} );
