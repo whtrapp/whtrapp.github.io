@@ -196,5 +196,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateWeatherDisplay();
   displayLastVisited();
-  autocomplete(document.getElementById("search"), getCitiesList());
+  autocomplete( document.getElementById( "search" ), getCitiesList() );
+  
+  // Update weather every 60 minutes
+  setInterval(() => {
+    updateWeatherDisplay();
+  }, 60 * 60 * 1000);
 });
