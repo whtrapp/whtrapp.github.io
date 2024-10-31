@@ -14,10 +14,10 @@ body {
 }
 
 /* ================================== */
-.searchbtn{
+.searchbtn {
   cursor: pointer;
 }
-input{
+input {
   cursor: pointer;
 }
 
@@ -467,3 +467,20 @@ footer {
   z-index: 1000;
 }
 
+/* Sweet Alert CSS */
+
+.custom-popup {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+  color: white;
+  border-radius: 10px !important;
+}
+
+.customButton {
+  background-color: #2a65a5;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
