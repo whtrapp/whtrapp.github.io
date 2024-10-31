@@ -8,6 +8,7 @@ body {
   margin: 0px;
   background: #000;
 }
+
 .autocomplete {
   position: relative;
   display: inline-block;
@@ -17,6 +18,7 @@ body {
 .searchbtn {
   cursor: pointer;
 }
+
 input {
   cursor: pointer;
 }
@@ -39,15 +41,20 @@ input {
   padding: 10px;
   cursor: pointer;
   background-color: #fff;
+  background-color: #fff;
   backdrop-filter: blur(25px);
+  border-bottom: 1px solid #d4d4d4;
   border-bottom: 1px solid #d4d4d4;
 }
 
 .autocomplete-items div:hover {
   background-color: #e9e9e9;
+  background-color: #e9e9e9;
 }
 
 .autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
@@ -86,22 +93,27 @@ input {
 }
 
 .sidebar::-webkit-scrollbar-track {
-  background: transparent; /* Hide track when not needed */
+  background: transparent;
+  /* Hide track when not needed */
   border-radius: 10px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.6); /* Semi-transparent thumb */
+  background: rgba(136, 136, 136, 0.6);
+  /* Semi-transparent thumb */
   border-radius: 10px;
-  background-clip: padding-box; /* Ensure border is visible */
+  background-clip: padding-box;
+  /* Ensure border is visible */
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(85, 85, 85, 0.8); /* Darker on hover */
+  background: rgba(85, 85, 85, 0.8);
+  /* Darker on hover */
 }
 
 .sidebar::-webkit-scrollbar-corner {
-  background: transparent; /* Hide corner when not needed */
+  background: transparent;
+  /* Hide corner when not needed */
 }
 
 #locationInput {
@@ -198,6 +210,8 @@ input {
 .weather-temperature {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .weather-temperature .today-temperature {
@@ -206,8 +220,36 @@ input {
   color: #d7e3fc;
 }
 
+.weather-temperature .today-temperature-group {
+  display: flex;
+}
+
 .tomorrow-temperature {
   margin: -10px 0px 0px 0px;
+}
+
+.container .bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.container .bottom .left {
+  width: 50%;
+  padding-right: 10px;
+}
+
+.container .bottom .right {
+  width: 50%;
+  padding-left: 10px;
+}
+
+.container .bottom .left .place {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+  margin-top: 5px;
 }
 
 .container .bottom .left h1,
@@ -216,8 +258,23 @@ input {
   margin: 0px;
 }
 
+.container .bottom .left #displayPlace {
+  font-size: 24px;
+}
+
 .container .bottom .day {
   color: #d7e3fc;
+}
+
+.right .weather-temperature h1 {
+  font-size: 45px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.right .tomorrow-temperature {
+  text-align: center;
+  font-size: 20px;
 }
 
 .sidebar h4 {
@@ -227,11 +284,6 @@ input {
 .time {
   font-size: 60px;
   margin: 0px;
-}
-
-.place {
-  display: flex;
-  align-items: center;
 }
 
 .clear-history {
@@ -250,6 +302,7 @@ input {
   gap: 20px;
   margin-bottom: 20px;
 }
+
 .clear-history:hover {
   color: black;
   background-color: white;
@@ -290,6 +343,7 @@ input {
 @media (max-width: 768px) {
   .whtrlive {
     flex-direction: column;
+    flex-direction: column;
   }
 
   .sidebar {
@@ -297,14 +351,18 @@ input {
     padding: 15px;
     border-right: none;
     margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .container {
+    width: 100%;
     width: 100%;
     padding: 15px;
   }
 
   .cities {
+    line-height: 2rem;
+    font-size: 18px;
     line-height: 2rem;
     font-size: 18px;
   }
@@ -326,9 +384,14 @@ input {
     padding: 10px 15px;
     width: 100%;
     text-align: center;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: center;
   }
 
+
   .clear-history:hover {
+    background-color: rgba(255, 255, 255, 0.1);
     background-color: rgba(255, 255, 255, 0.1);
   }
 }
@@ -337,6 +400,7 @@ input {
   .sidebar {
     padding: 10px;
     background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .container {
@@ -344,6 +408,7 @@ input {
   }
 
   .time {
+    font-size: 28px;
     font-size: 28px;
   }
 
@@ -361,14 +426,20 @@ input {
   .container .top img {
     width: 70%;
     max-width: 120px;
+    width: 70%;
+    max-width: 120px;
   }
+
 
   .container .top {
     flex-direction: column;
     align-items: center;
+    align-items: center;
   }
 
   .container .bottom {
+    flex-direction: column;
+    align-items: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -377,30 +448,28 @@ input {
   .weather-temperature {
     flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .weather-icon {
     width: 60px;
+    width: 60px;
   }
 }
+
 /* Style for the Explore Button */
-
-/* 
-position: absolute;
-right: 20px;   
-top: 50%;
-transform: translateY(-50%); 
-*/
-
-.custom-button {
-  width: 100%;
-  background-color: #2a65a5 !important;
-  color: white !important;
-  font-family: "Satoshi-Regular", sans-serif;
-  font-size: 16px;
-  border: none !important;
-  padding: 10px 30px;
-  margin-top: 10px;
+.explore-btn {
+  position: absolute;
+  right: 20px;
+  /* Position it to the right */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #2a65a5;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
   cursor: pointer;
   transition: all 0.4s ease;
   border-radius: 30px;
@@ -415,14 +484,9 @@ transform: translateY(-50%);
   background-color: #0056b3 !important;
 }
 
-.custom-button svg {
-  fill: white !important;
-}
-
-.custom-button-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.explore-btn svg {
+  margin-left: 10px;
+  /* Space between text and chevron icon */
 }
 
 ::-webkit-scrollbar {
@@ -455,6 +519,7 @@ transform: translateY(-50%);
     font-size: 16px;
   }
 }
+
 footer {
   color: white;
   bottom: 0;
@@ -464,6 +529,7 @@ footer {
   text-align: center;
   padding: 10px;
   font-size: 0.625rem;
+  z-index: 1000;
   z-index: 1000;
 }
 
