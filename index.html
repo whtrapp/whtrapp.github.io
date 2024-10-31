@@ -25,6 +25,9 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"
         rel="stylesheet" />
 
+  <!-- SweetAlert2 Library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <!--Style CSS-->
   <link rel="stylesheet"
         href="css/satoshi.css" />
@@ -73,6 +76,8 @@
         </button>
       </form>
       <h4>Cities</h4>
+      <div id="spinner"
+           class="spinner"></div>
       <div class="cities-div">
         <ul class="cities">
           <li class="city">New York</li>
@@ -186,15 +191,17 @@
         </div>
         <div class="right">
           <div class="weather-temperature">
-            <img src="img/icons/day/113.png"
-                 class="weather-icon"
-                 alt="weather status icon" />
-            <h1 class="today-temperature">40&#176;C / 104&#176;F</h1>
+            <div class="today-temperature-group">
+              <img src="img/icons/day/113.png"
+                   class="weather-icon"
+                   alt="weather status icon" />
+              <h1 class="today-temperature">40&#176;C / 104&#176;F</h1>
+            </div>
+            <h2 class="tomorrow-temperature"
+                style="text-align: end">
+              Tommorow: 20&#176;C / 68&#176;F
+            </h2>
           </div>
-          <h2 class="tomorrow-temperature"
-              style="text-align: end">
-            Tommorow: 20&#176;C / 68&#176;F
-          </h2>
         </div>
       </div>
     </div>
