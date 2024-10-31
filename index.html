@@ -19,11 +19,7 @@
     <title>whtr.live - Minimalistic Weather Website</title>
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-    <!--AOS Library-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- SweetAlert2 Library -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
     <!--Style CSS-->
     <link rel="stylesheet" href="css/satoshi.css" />
@@ -41,15 +37,26 @@
       content="Weather, Live Weather, Weather Updates, Weather Today, Todays Weather Updates, Weather Status, whtr.live"
     />
     <meta name="robots" content="index, follow" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="English" />
+    
+    <!-- Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "whtr.live - Minimalistic Weather Website",
+        "url": "https://whtr.live",
+        "description": "Minimalistic website for checking weather updates by location.",
+        "keywords": "Weather, Live Weather, Weather Updates, Today’s Weather, Weather Status"
+      }
+      </script>
   </head>
 
   <body>
     <div class="whtrlive">
-      <div class="sidebar" data-aos="fade-right">
+      <div class="sidebar" data-aos="fade-right" aria-label="Location and Weather Information Sidebar">
         <form id="locationInput">
-          <div class="autocomplete" style="width: 300px">
+          <div class="autocomplete">
             <input
               id="search"
               type="text"
@@ -57,7 +64,7 @@
               placeholder="Search Location.."
             />
           </div>
-          <button class="searchbtn">
+          <button type="button" class="searchbtn" aria-label="Search">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -72,7 +79,7 @@
           </button>
         </form>
         <h4>Cities</h4>
-        <button id="exploreBtn" class="custom-button">
+        <button id="exploreBtn" class="custom-button" aria-label="Explore Places">
           <div class="custom-button-content">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,9 +120,9 @@
         <hr />
         <h4>Last Visited</h4>
         <ul id="lastVisitedList" class="cities">
-          Empty..
+          <li>Empty..</li>
         </ul>
-        <button id="clearHistory" class="clear-history">
+        <button id="clearHistory" class="clear-history" aria-label="Clear History">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -174,7 +181,7 @@
         <div class="top" data-aos="fade-down">
           <div>
             <img src="img/logo.png" alt="logo" />
-            <p style="margin: 0px">Dev by Ato & Apixul</p>
+            <p class="dev-info">Dev by Ato & Apixul</p>
           </div>
           <h1 class="time">6:09&nbsp;PM</h1>
         </div>
@@ -219,7 +226,7 @@
               />
               <h1 class="today-temperature">40&#176;C / 104&#176;F</h1>
             </div>
-            <h2 class="tomorrow-temperature" style="text-align: end">
+            <h2 class="tomorrow-temperature">
               Tommorow: 20&#176;C / 68&#176;F
             </h2>
           </div>
@@ -229,7 +236,12 @@
         &copy; 2024 All Rights Reserved | Developed By Ato and Apixul
       </footer>
     </div>
+    <!--AOS Library-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <!--AOS JS-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

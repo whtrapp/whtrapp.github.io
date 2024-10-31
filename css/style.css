@@ -11,6 +11,7 @@ body {
 .autocomplete {
   position: relative;
   display: inline-block;
+  width: 300px;
 }
 
 /* ================================== */
@@ -261,6 +262,14 @@ input {
 
 .clear-history:hover svg {
   fill: black;
+}
+
+.dev-info{
+  margin: 0px;
+}
+
+.tomorrow-temperature {
+  text-align: end;
 }
 
 @media (max-width: 1024px) {
