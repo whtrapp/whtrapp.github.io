@@ -8,6 +8,49 @@ body {
   margin: 0px;
   background: #000;
 }
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+/* ================================== */
+.searchbtn {
+  cursor: pointer;
+}
+input {
+  cursor: pointer;
+}
+
+/* ===================================== */
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  color: Black;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  backdrop-filter: blur(25px);
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
 
 .whtrlive {
   width: 100%;
@@ -233,30 +276,166 @@ body {
   fill: black;
 }
 
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 30%;
+    padding: 20px;
+  }
+
+  .container {
+    width: 70%;
+    padding: 20px;
+  }
+
+  .time {
+    font-size: 48px;
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 56px;
+  }
+
+  .clear-history {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whtrlive {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    border-right: none;
+    margin-bottom: 20px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .cities {
+    line-height: 2rem;
+    font-size: 18px;
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 48px;
+  }
+
+  .tomorrow-temperature {
+    text-align: center;
+  }
+
+  .time {
+    font-size: 36px;
+  }
+
+  .clear-history {
+    font-size: 14px;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .clear-history:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .time {
+    font-size: 28px;
+  }
+
+  .weather-temperature .today-temperature {
+    font-size: 40px;
+  }
+
+  .clear-history {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+
+  /* Logo adjustments */
+  .container .top img {
+    width: 70%;
+    max-width: 120px;
+  }
+
+  .container .top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .weather-temperature {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weather-icon {
+    width: 60px;
+  }
+}
 /* Style for the Explore Button */
-.explore-btn {
-  position: absolute;
-  right: 20px; /* Position it to the right */
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #2a65a5;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 18px;
+
+/* 
+position: absolute;
+right: 20px;   
+top: 50%;
+transform: translateY(-50%); 
+*/
+
+.custom-button {
+  width: 100%;
+  background-color: #2a65a5 !important;
+  color: white !important;
+  font-family: "Satoshi-Regular", sans-serif;
+  font-size: 16px;
+  border: none !important;
+  padding: 10px 30px;
+  margin-top: 10px;
   cursor: pointer;
-  border-radius: 50px;
+  transition: all 0.4s ease;
+  border-radius: 30px;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 5px;
 }
 
-.explore-btn:hover {
-  background-color: #0056b3;
+.custom-button:hover {
+  background-color: #0056b3 !important;
 }
 
-.explore-btn svg {
-  margin-left: 10px; /* Space between text and chevron icon */
+.custom-button svg {
+  fill: white !important;
+}
+
+.custom-button-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -288,4 +467,33 @@ body {
     padding: 10px 16px;
     font-size: 16px;
   }
+}
+footer {
+  color: white;
+  bottom: 0;
+  right: 1.5%;
+  transform: translateX(-10%);
+  position: fixed;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.625rem;
+  z-index: 1000;
+}
+
+/* Sweet Alert CSS */
+
+.custom-popup {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+  color: white;
+  border-radius: 10px !important;
+}
+
+.customButton {
+  background-color: #2a65a5;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
 }

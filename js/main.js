@@ -1,4 +1,7 @@
+
 import { dayOfTheWeek, getMonth } from "./utils.js";
+
+import { dayOfTheWeek, getMonth, getCitiesList } from './utils.js';
 import {
   fetchWeatherData,
   fetchAstronomyData,
@@ -8,6 +11,7 @@ import {
   saveToLocalStorage,
   clearLastVisited,
   getLastVisitedCity,
+
 } from "./localStorage.js";
 import { updateUI } from "./uiController.js";
 
@@ -43,17 +47,57 @@ document.addEventListener("DOMContentLoaded", function () {
     "Bali",
     "Sydney",
     "Dubai",
+
+} from './localStorage.js';
+import { updateUI } from './uiController.js';
+import { autocomplete } from './searchAutocomplete.js';
+import { fetchTime } from './timeAPI.js';
+
+var timeZone;
+
+document.addEventListener( 'DOMContentLoaded', function () {
+  const app = document.querySelector( '.whtrlive' );
+  const temp = document.querySelector( '.today-temperature' );
+  const dateOutput = document.querySelector( '.date' );
+  const timeOutput = document.querySelector( '.time' );
+  const nameOutput = document.querySelector( '.place' );
+  const icon = document.querySelector( '.weather-icon' );
+  const cloudOutput = document.querySelector( '.cloudy' );
+  const humidityOutput = document.querySelector( '.humidity' );
+  const windOutput = document.querySelector( '.windspeed' );
+  const PrecipitationOutput = document.querySelector( '.precipitation' );
+  const form = document.getElementById( 'locationInput' );
+  const search = document.querySelector( '.search' );
+  const clrHistory = document.getElementById( 'clearHistory' );
+  const cities = document.querySelectorAll( '.city' );
+  const dayOutput = document.querySelector( '.day' );
+  const sunriseOutput = document.querySelector( '.sunrise' );
+  const sunsetOutput = document.querySelector( '.sunset' );
+  const tomorrowOutput = document.querySelector( '.tomorrow-temperature' );
+  const lastVisitedList = document.getElementById( 'lastVisitedList' );
+  const exploreBtn = document.getElementById( 'exploreBtn' );
+  const displayPlace = document.getElementById( 'displayPlace' );
+
+  let place = "";
+  let cityInput = getLastVisitedCity() || 'London';
+
+  const exploreCities = [
+    'New York', 'California', 'Paris', 'Tokyo', 'Bali', 'Sydney', 'Dubai',
+
   ];
 
-  async function updateWeatherDisplay(city = cityInput) {
+  async function updateWeatherDisplay( city = cityInput ) {
+    showSpinner();
     try {
-      const weatherData = await fetchWeatherData(city);
+      const weatherData = await fetchWeatherData( city );
+      timeZone = weatherData.location.tz_id;
       const date = weatherData.location.localtime;
-      const y = parseInt(date.substr(0, 4));
-      const m = parseInt(date.substr(5, 2));
-      const d = parseInt(date.substr(8, 2));
-      const time = date.substr(11);
+      const y = parseInt( date.substr( 0, 4 ) );
+      const m = parseInt( date.substr( 5, 2 ) );
+      const d = parseInt( date.substr( 8, 2 ) );
+      const time = date.substr( 11 );
       const theDate = `${y}-${m}-${d}`;
+
 
       // Update UI elements
       temp.innerHTML = `${weatherData.current.temp_c}&#176;C / ${weatherData.current.temp_f}&#176;F`;
@@ -71,6 +115,24 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchAstronomyData(city, theDate),
         fetchForecastData(city),
       ]);
+
+      setInterval( () => displayTime( timeZone ), 1000 );
+
+      temp.innerHTML = `${weatherData.current.temp_c}&#176;C / ${weatherData.current.temp_f}&#176;F`;
+      dateOutput.innerHTML = `${getMonth( d, m, y )} ${d}, ${y}`;
+      timeOutput.innerHTML = time;
+      dayOutput.innerHTML = dayOfTheWeek( d, m, y );
+      place = `${weatherData.location.name}, ${weatherData.location.country}`;
+      typingEffect();
+
+      const iconID = weatherData.current.condition.icon.substr( '//cdn.weatherapi.com/weather/64x64/'.length );
+      icon.src = './img/icons/' + iconID;
+
+      const [ astronomyData, forecastData ] = await Promise.all( [
+        fetchAstronomyData( city, theDate ),
+        fetchForecastData( city ),
+      ] );
+
 
       sunriseOutput.innerHTML = astronomyData.astronomy.astro.sunrise;
       sunsetOutput.innerHTML = astronomyData.astronomy.astro.sunset;
@@ -157,3 +219,139 @@ document.addEventListener("DOMContentLoaded", function () {
   updateWeatherDisplay();
   displayLastVisited();
 });
+      cloudOutput.innerHTML = weatherData.current.cloud + '%';
+      humidityOutput.innerHTML = weatherData.current.humidity + '%';
+      windOutput.innerHTML = weatherData.current.wind_kph + 'km/h';
+      PrecipitationOutput.innerHTML = weatherData.current.precip_mm + 'mm';
+
+      const timeOfDay = weatherData.current.is_day ? 'day' : 'night';
+      updateUI( app, weatherData, timeOfDay, exploreBtn );
+
+      saveToLocalStorage( weatherData.location.name );
+      displayLastVisited();
+      app.style.opacity = '1';
+    } catch ( error ) {
+      console.error( 'Error updating weather display:', error );
+      app.style.opacity = '1';
+    } finally {
+      hideSpinner();
+    }
+  }
+
+  async function displayTime( timeZone ) {
+    const timeData = await fetchTime( timeZone );
+    const y = timeData.year;
+    const m = timeData.month;
+    const d = timeData.day;
+    const time = timeData.time;
+    const theDate = `${y}-${m}-${d}`;
+
+    dateOutput.innerHTML = `${getMonth( d, m, y )} ${d}, ${y}`;
+    timeOutput.innerHTML = time;
+    dayOutput.innerHTML = dayOfTheWeek( d, m, y );
+  }
+
+  function displayLastVisited() {
+    const storedData = localStorage.getItem( 'lastVisited' );
+    lastVisitedList.innerHTML = '';
+
+    if ( storedData ) {
+      try {
+        const data = JSON.parse( storedData );
+        const fragment = document.createDocumentFragment();
+        data.forEach( ( item ) => {
+          const li = document.createElement( 'li' );
+          li.classList.add( 'city' );
+          li.textContent = item.city;
+          li.addEventListener( 'click', handleCityClick );
+          fragment.appendChild( li );
+        } );
+        lastVisitedList.appendChild( fragment );
+      } catch ( error ) {
+        console.error( 'Error parsing stored data:', error );
+        lastVisitedList.innerHTML = 'Error loading data.';
+      }
+    } else {
+      lastVisitedList.innerHTML = 'Empty..';
+    }
+  }
+
+  function handleCityClick( e ) {
+    cityInput = e.target.innerHTML;
+    updateWeatherDisplay( cityInput );
+  }
+
+  exploreBtn.addEventListener( 'click', () => {
+    cityInput = exploreCities[ Math.floor( Math.random() * exploreCities.length ) ];
+    updateWeatherDisplay();
+  } );
+
+  clrHistory.addEventListener( 'click', () => {
+    clearLastVisited();
+    displayLastVisited();
+  } );
+
+  cities.forEach( ( city ) => {
+    city.addEventListener( 'click', ( e ) => {
+      cityInput = e.target.innerHTML;
+      updateWeatherDisplay();
+    } );
+  } );
+
+  form.addEventListener( 'submit', ( e ) => {
+    e.preventDefault();
+    if ( search.value.length === 0 ) {
+      Swal.fire( {
+        title: "Please type a proper city name",
+        customClass: {
+          popup: 'custom-popup',
+          confirmButton: 'customButton',
+        },
+        background: 'transparent',
+        showConfirmButton: true,
+        confirmButtonText: 'OK',
+      } );
+    } else {
+      cityInput = search.value;
+      updateWeatherDisplay();
+      search.value = '';
+    }
+  } );
+
+  function typingEffect() {
+    let initialText = "";
+    let placeText = place;
+    let index = 0;
+
+    displayPlace.innerHTML = initialText;
+
+    function typeCharacter() {
+      if ( index < placeText.length ) {
+        displayPlace.innerHTML = initialText + placeText.slice( 0, index + 1 );
+        index++;
+        setTimeout( typeCharacter, 100 );
+      }
+    }
+
+    typeCharacter();
+  }
+
+  function showSpinner() {
+    document.getElementById( 'spinner' ).style.display = 'block';
+  }
+
+  function hideSpinner() {
+    document.getElementById( 'spinner' ).style.display = 'none';
+  }
+
+  updateWeatherDisplay();
+  displayLastVisited();
+  autocomplete( document.getElementById( "search" ), getCitiesList() );
+  
+  // Update weather every 60 minutes
+  setInterval(() => {
+    updateWeatherDisplay();
+  }, 60 * 60 * 1000);
+} );
+
+
