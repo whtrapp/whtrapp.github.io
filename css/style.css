@@ -302,14 +302,13 @@ input {
   }
 
   .sidebar {
-    width: 100%;
-    padding: 15px;
+    width: 94.5%;
     border-right: none;
     margin-bottom: 20px;
   }
 
   .container {
-    width: 100%;
+    width: 95%;
     padding: 15px;
   }
 
